@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class LengthEquivalencies {
 
+    public String [] opciones = {"Metros", "Decametros", "Kilometros"};
+
     private String[][] longitud = {
             {"metro", "1.0"},
             {"centimetro", "100"},

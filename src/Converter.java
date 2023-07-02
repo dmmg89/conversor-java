@@ -30,9 +30,9 @@ public class Converter {
 
 
 
-        JRadioButton radioButton1 = new JRadioButton("Opción 1",true);
-        JRadioButton radioButton2 = new JRadioButton("Opción 2",false);
-        JRadioButton radioButton3 = new JRadioButton("Opción 3",false);
+        JRadioButton radioButton1 = new JRadioButton("Moneda",true);
+        JRadioButton radioButton2 = new JRadioButton("Longitud",false);
+        JRadioButton radioButton3 = new JRadioButton("Area",false);
 
         // Crear un grupo de botones de opción
         ButtonGroup buttonGroup = new ButtonGroup();
@@ -42,9 +42,18 @@ public class Converter {
 
         // Crear la lista desplegable
         String[] opciones = {"Opción A", "Opción B", "Opción C"};
+        LengthEquivalencies length = new LengthEquivalencies();
+
         JComboBox<String> comboBox1 = new JComboBox<>(opciones);
         JComboBox<String> comboBox2 = new JComboBox<>(opciones);
 
+        if (radioButton1.isSelected()) {
+             comboBox1 = new JComboBox<>(length.opciones);
+             comboBox2 = new JComboBox<>(length.opciones);
+        }else {
+             comboBox1 = new JComboBox<>(opciones);
+             comboBox2 = new JComboBox<>(opciones);
+        }
         // Crear un JPanel para agrupar los componentes
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(540,380));
