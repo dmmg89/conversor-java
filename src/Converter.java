@@ -2,6 +2,8 @@ import ConversionData.LengthEquivalencies;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,19 +43,31 @@ public class Converter {
         buttonGroup.add(radioButton3);
 
         // Crear la lista desplegable
-        String[] opciones = {"Opción A", "Opción B", "Opción C"};
+        String[] opciones = new String[5];
         LengthEquivalencies length = new LengthEquivalencies();
 
         JComboBox<String> comboBox1 = new JComboBox<>(opciones);
         JComboBox<String> comboBox2 = new JComboBox<>(opciones);
 
-        if (radioButton1.isSelected()) {
+        radioButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(radioButton1.isSelected()){
+                    for (int index = 0; index<length.opciones.length;index++){
+                        opciones[index] = length.opciones[index];
+                    }
+
+                }
+            }
+        });
+
+      /*  if (radioButton1.isSelected()) {
              comboBox1 = new JComboBox<>(length.opciones);
              comboBox2 = new JComboBox<>(length.opciones);
         }else {
              comboBox1 = new JComboBox<>(opciones);
              comboBox2 = new JComboBox<>(opciones);
-        }
+        }*/
         // Crear un JPanel para agrupar los componentes
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(540,380));
