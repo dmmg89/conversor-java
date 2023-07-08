@@ -17,22 +17,27 @@ import java.util.Map;
  */
 public class Converter {
 
-    static String welcomeMessage = "Bienvenido al conversor \n El programa puede convertir " +
-                                                        "algunas magnitudes a sus equivalentes\n"+
-                                                        "Este proyecto es un reto propuesto por Alura";
+
 
 
     public static void main( String[] args ) {
 
+        String welcomeMessage = "Bienvenido al conversor \n" + " El programa puede convertir " +
+                "algunas magnitudes a sus equivalentes\n"+
+                "Este proyecto es un reto propuesto por Alura";
+
+
+        //creación de panel principal
         JPanel welcomePanel = new JPanel();
         welcomePanel.setPreferredSize(new Dimension(300,300));
         JLabel presentation = new JLabel(welcomeMessage);
+        presentation.setPreferredSize(new Dimension(260,200));
         welcomePanel.add(presentation);
         JOptionPane.showMessageDialog(null,welcomePanel);
 
 
-
-        JRadioButton radioButton1 = new JRadioButton("Moneda",true);
+    //botones redondos de selección
+        JRadioButton radioButton1 = new JRadioButton("Moneda",false);
         JRadioButton radioButton2 = new JRadioButton("Longitud",false);
         JRadioButton radioButton3 = new JRadioButton("Area",false);
 
@@ -49,17 +54,7 @@ public class Converter {
         JComboBox<String> comboBox1 = new JComboBox<>(opciones);
         JComboBox<String> comboBox2 = new JComboBox<>(opciones);
 
-        radioButton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                if(radioButton1.isSelected()){
-                    for (int index = 0; index<length.opciones.length;index++){
-                        opciones[index] = length.opciones[index];
-                    }
 
-                }
-            }
-        });
 
       /*  if (radioButton1.isSelected()) {
              comboBox1 = new JComboBox<>(length.opciones);
@@ -69,17 +64,26 @@ public class Converter {
              comboBox2 = new JComboBox<>(opciones);
         }*/
         // Crear un JPanel para agrupar los componentes
-        JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(540,380));
+        JPanel panelRatio = new JPanel();
+        panelRatio.setLayout(new FlowLayout(FlowLayout.LEADING));
+        panelRatio.setPreferredSize(new Dimension(540,380));
 
-        panel.add(radioButton1);
-        panel.add(radioButton2);
-        panel.add(radioButton3);
-        panel.add(comboBox1);
-        panel.add(comboBox2);
+        JFrame frameRatioButton = new JFrame("Radio botones");
+        JFrame frameList = new JFrame("listas desplegables");
+
+        panelRatio.add(radioButton1);
+        panelRatio.add(radioButton2);
+        panelRatio.add(radioButton3);
+        frameRatioButton.add(panelRatio,BorderLayout.NORTH);
+
+        JPanel panelList = new JPanel();
+
+        panelList.add(comboBox1);
+        panelList.add(comboBox2);
+        frameList.add(panelList,BorderLayout.SOUTH);
 
         // Mostrar los componentes en un JOptionPane
-        JOptionPane.showMessageDialog(null, panel,
+        JOptionPane.showMessageDialog(null, panelRatio,
                                 "Selecciona una opción", JOptionPane.QUESTION_MESSAGE);
 
         // Obtener la opción seleccionada
